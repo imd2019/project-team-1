@@ -3,8 +3,17 @@ let width = windowWidth;
 let height = windowHeight;
 
 function setup() {
-  sketch.createCanvas(windowWidth, windowHeight);
+  console.log("setup");
+  sketch.createCanvas(width, height);
   sketch.frameRate(30);
+
+  gameRunning = false;
+  gameState = GameStates.MENU;
+
+  setupMenuScene();
+  setupGameScene();
+  setupWorkbenchScene();
+
 }
 window.setup = setup;
 
