@@ -4,13 +4,13 @@ let height = windowHeight;
 
 function setup() {
   console.log("setup");
-  sketch.createCanvas(width, height);
+  sketch.createCanvas(1280, 720);
   sketch.frameRate(30);
 
   gameRunning = false;
-  gameState = GameStates.MENU;
+  gameState = GameStates.SHOP;
 
-  setupMenuScene();
+  setupShopScene();
   setupGameScene();
   setupWorkbenchScene();
 

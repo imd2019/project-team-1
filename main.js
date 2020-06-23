@@ -4,7 +4,7 @@ var gameRunning;
 var gameState;
 
 const GameStates = {
-    MENU: 0,
+    SHOP: 0,
     GAME: 1,
     WORKBENCH: 2,
     COMPUTER: 3,
@@ -21,8 +21,8 @@ const GameStates = {
 //--------------------------------------------------------------------------------------------------------
 
 function draw() {
-    if (gameState == GameStates.MENU) {
-        drawMenuScene();
+    if (gameState == GameStates.SHOP) {
+        drawShopScene();
     }
     if (gameState == GameStates.GAME) {
         drawGameScene();
@@ -39,8 +39,8 @@ function draw() {
 
 
 function changeGameState(newState) {
-    if (newState == GameStates.MENU) {
-        initMenuScene();
+    if (newState == GameStates.SHOP) {
+        initShopScene();
     }
     if (newState == GameStates.GAME) {
         initGameScene();
