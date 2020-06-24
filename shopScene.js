@@ -155,7 +155,7 @@ function drawShopScene() {
     }
 
     if (button1.mouseIsPressed) {
-        changeGameState(0);
+        // changeGameState(2);
     }
 
     if (pc.mouseIsOver) {
@@ -166,6 +166,10 @@ function drawShopScene() {
     if (workbench.mouseIsOver) {
         workbench.changeImage("hover");
     } else workbench.changeImage("normal");
+
+    if (workbench.mouseIsPressed) {
+        changeGameState(2);
+    }
 
     if (cash_register.mouseIsOver) {
         cash_register.changeImage("hover");
