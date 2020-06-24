@@ -1,6 +1,6 @@
 let sketch = new p5();
-let width = windowWidth;
-let height = windowHeight;
+let width = 1280 //windowWidth;
+let height = 720 //windowHeight;
 
 function setup() {
   console.log("setup");
@@ -18,6 +18,6 @@ function setup() {
 window.setup = setup;
 
 function windowResized() {
-  sketch.resizeCanvas(windowWidth, windowHeight);
+  //sketch.resizeCanvas(windowWidth, windowHeight);
 }
 window.addEventListener("resize", windowResized);

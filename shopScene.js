@@ -35,7 +35,7 @@ function setupShopScene() {
 
     //FOREGROUND2
 
-    foreground2 = createSprite(width / 2 - 100, height / 2 - 33);
+    foreground2 = createSprite(width / 2, height / 2);
     foreground2.addImage(fg2);
     menuScene.add(foreground2);
 
@@ -51,7 +51,7 @@ function setupShopScene() {
 
     //CHARACTER
 
-    character = createSprite(width / 2, height / 2 - 15);
+    character = createSprite(width / 2, height / 2 + 10);
     character.addImage("left", character_left);
     character.addImage("right", character_right);
     character.addAnimation('walking', 'Laufen/laufen1.png', 'Laufen/laufen9.png');
@@ -61,7 +61,7 @@ function setupShopScene() {
 
     //FOREGROUND
 
-    foreground = createSprite(width / 2 - 100, height / 2 - 33);
+    foreground = createSprite(width / 2, height / 2);
     foreground.addImage(fg);
     menuScene.add(foreground);
 
@@ -75,7 +75,7 @@ function setupShopScene() {
 
     //PC
 
-    pc = createSprite(720, 336);
+    pc = createSprite(750, 336);
     pc.addImage("normal", pc_texture);
     pc.addImage("hover", pc_hover);
     pc.scale = 0.17;
@@ -84,7 +84,7 @@ function setupShopScene() {
 
     //CASHREGISTER
 
-    cash_register = createSprite(500, 348);
+    cash_register = createSprite(520, 348);
     cash_register.addImage("normal", cash_texture);
     cash_register.addImage("hover", cash_hover);
     cash_register.scale = 0.17;
@@ -114,7 +114,7 @@ function drawShopScene() {
     rect(-10, 529, 1300, 580);
 
     if (character_state == CharacterStates.WALKING_RIGHT) { // State: Walking right
-        if (character.position.x < width - character.width) {
+        if (character.position.x < 1200) {
             character.position.x += 5;
         }
         if (keyIsPressed) {
