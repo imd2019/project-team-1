@@ -2,12 +2,15 @@ var canvasWidth = 1920;
 var CanvasHeight = 1080;
 var gameRunning;
 var gameState;
+var Umsatz;
 
 const GameStates = {
     SHOP: 0,
     GAME: 1,
     WORKBENCH: 2,
-    COMPUTER: 3,
+    INTRO: 3,
+    KASSE: 4,
+    COMPUTER: 5,
 };
 
 //--------------------------------------------------------------------------------------------------------
@@ -30,8 +33,14 @@ function draw() {
     if (gameState == GameStates.WORKBENCH) {
         drawWorkbenchScene();
     }
+    if (gameState == GameStates.INTRO) {
+        drawIntroScene();
+    }
+    if (gameState == GameStates.KASSE) {
+        drawKassenScene();
+    }
     if (gameState == GameStates.COMPUTER) {
-        drawStageClearScene();
+        drawComputerScene();
     }
 }
 
@@ -39,6 +48,26 @@ function draw() {
 
 
 function changeGameState(newState) {
+    if (gameState == GameStates.SHOP) {
+        exitShopScene();
+    }
+    if (gameState == GameStates.GAME) {
+        exitGameScene();
+    }
+    if (gameState == GameStates.WORKBENCH) {
+        exitWorkbenchScene();
+    }
+    if (gameState == GameStates.INTRO) {
+        exitIntroScene();
+    }
+    if (gameState == GameStates.KASSE) {
+        exitKassenScene();
+    }
+    if (gameState == GameStates.COMPUTER) {
+        exitComputerScene();
+    }
+
+
     if (newState == GameStates.SHOP) {
         initShopScene();
     }
@@ -48,8 +77,14 @@ function changeGameState(newState) {
     if (newState == GameStates.WORKBENCH) {
         initWorkbenchScene();
     }
+    if (newState == GameStates.INTRO) {
+        initIntroScene();
+    }
+    if (newState == GameStates.KASSE) {
+        initKassenScene();
+    }
     if (newState == GameStates.COMPUTER) {
-        initStageClearScene();
+        initComputerScene();
     }
 
 

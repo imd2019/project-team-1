@@ -8,11 +8,15 @@ function setup() {
   sketch.frameRate(30);
 
   gameRunning = false;
-  gameState = GameStates.SHOP;
 
   setupShopScene();
   setupGameScene();
   setupWorkbenchScene();
+  setupIntroScene();
+  setupKasseScene();
+  setupComputerScene();
+
+  changeGameState(GameStates.SHOP);
 
 }
 window.setup = setup;
