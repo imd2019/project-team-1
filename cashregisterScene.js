@@ -9,6 +9,7 @@ var BP = loadImage('Buttons_K/Button_Preise.png');
 var BP_hover = loadImage('Buttons_K/Button_Preise_Text_Hover.png');
 var BRe = loadImage('Buttons_K/Button_Renovieren.png');
 var BRe_hover = loadImage('Buttons_K/Button_Renovieren_Text_Hover.png');
+var ButtonCount_Cash = 0;
 
 //--------------------------------------------------------------------------------------------------------
 
@@ -39,7 +40,7 @@ function setupKasseScene() {
     Button_Preise.mouseActive = true;
     kasseScene.add(Button_Preise);
 
-    //BUTTON PREISE
+    //BUTTON RENOVIEREN
 
     Button_Renovieren = createSprite(width / 6, height / 2);
     Button_Renovieren.addImage("normal", BRe);
@@ -52,7 +53,14 @@ function setupKasseScene() {
 
 //BUTTON ANGEBOT INPUT
 function Button_Angebot_mouseReleased() {
+    changeMoney(3);
+    ButtonCount++;
+    ButtonCount_Cash++;
+    lastButtonPressed = Button_Angebot;
+    Button_Angebot.wasPressed = true;
     changeGameState(GameStates.SHOP);
+    character.changeAnimation("typing");
+    cash_register.changeAnimation("shine");
 }
 
 function Button_Angebot_mouseOver() {
@@ -67,6 +75,14 @@ function Button_Angebot_mouseOut() {
 //BUTTON PREISE INPUT
 function Button_Preise_mouseReleased() {
     changeGameState(GameStates.SHOP);
+    character.changeAnimation("typing");
+    changeMoney(3);
+    ButtonCount++;
+    ButtonCount_Cash++;
+    lastButtonPressed = Button_Preise;
+    Button_Preise.wasPressed = true;
+    console.log(ButtonCount);
+
 }
 
 function Button_Preise_mouseOver() {
@@ -77,9 +93,15 @@ function Button_Preise_mouseOut() {
     Button_Preise.changeImage("normal");
 }
 
-//BUTTON PREISE INPUT
+//BUTTON RENOVIEREN INPUT
 function Button_Renovieren_mouseReleased() {
     changeGameState(GameStates.SHOP);
+    character.changeAnimation("typing");
+    changeMoney(-8);
+    ButtonCount++;
+    ButtonCount_Cash++;
+    lastButtonPressed = Button_Renovieren;
+    Button_Renovieren.wasPressed = true;
 }
 
 function Button_Renovieren_mouseOver() {
@@ -95,21 +117,23 @@ function Button_Renovieren_mouseOut() {
 
 
 
-
-
 function initKassenScene() {
     console.log("initKassenScene()");
-    Button_Angebot.onMouseReleased = Button_Angebot_mouseReleased;
-    Button_Angebot.onMouseOver = Button_Angebot_mouseOver;
-    Button_Angebot.onMouseOut = Button_Angebot_mouseOut;
-
-    Button_Preise.onMouseReleased = Button_Preise_mouseReleased;
-    Button_Preise.onMouseOver = Button_Preise_mouseOver;
-    Button_Preise.onMouseOut = Button_Preise_mouseOut;
-
-    Button_Renovieren.onMouseReleased = Button_Renovieren_mouseReleased;
-    Button_Renovieren.onMouseOver = Button_Renovieren_mouseOver;
-    Button_Renovieren.onMouseOut = Button_Renovieren_mouseOut;
+    if (!Button_Angebot.wasPressed) {
+        Button_Angebot.onMouseReleased = Button_Angebot_mouseReleased;
+        Button_Angebot.onMouseOver = Button_Angebot_mouseOver;
+        Button_Angebot.onMouseOut = Button_Angebot_mouseOut;
+    }
+    if (!Button_Preise.wasPressed) {
+        Button_Preise.onMouseReleased = Button_Preise_mouseReleased;
+        Button_Preise.onMouseOver = Button_Preise_mouseOver;
+        Button_Preise.onMouseOut = Button_Preise_mouseOut;
+    }
+    if (!Button_Renovieren.wasPressed) {
+        Button_Renovieren.onMouseReleased = Button_Renovieren_mouseReleased;
+        Button_Renovieren.onMouseOver = Button_Renovieren_mouseOver;
+        Button_Renovieren.onMouseOut = Button_Renovieren_mouseOut;
+    }
 }
 
 function exitKassenScene() {
@@ -132,7 +156,7 @@ function exitKassenScene() {
 
 
 function drawKassenScene() {
-    background(254, 228, 179);
+    background(backgroundColor);
 
 
 

@@ -1,11 +1,14 @@
 // introScene variables
 
 var introScene;
-
+var intro0;
 var bn = loadImage('Einführung_button/button_weiter.png');
 var bn_hover = loadImage('Einführung_button/button_weiter_hover.png');
 var i = loadImage('Graphics/introscreen1.png');
-//var i1 = loadImage('Graphics/introscreen1.png');
+var i1 = loadImage('Graphics/introscreen1.png');
+
+var ms;
+var screenNumber = 1;
 
 //--------------------------------------------------------------------------------------------------------
 
@@ -82,9 +85,7 @@ function setupIntroScene() {
 
     introScene.add(intro0);
 
-
     //BUTTON NEXT
-
     button_next = createSprite(1100, 600);
     button_next.addImage("normal", bn);
     button_next.addImage("hover", bn_hover);
@@ -92,16 +93,17 @@ function setupIntroScene() {
     button_next.mouseActive = true;
     introScene.add(button_next);
 
-
 }
 
-
 function buttonNext_mouseReleased() {
-    if (screen === 6) {
+    console.log("Introscene Screen: " + screenNumber);
+    if (screenNumber == 7) {
+        console.log("Change to Shop Scene");
         changeGameState(GameStates.SHOP);
     } else {
-        screen++;
-        intro0.changeAnimation("screen" + screen);
+        screenNumber++;
+        intro0.changeAnimation("screen" + screenNumber);
+        console.log("Changed animation to screen" + screenNumber);
     }
 }
 
@@ -115,6 +117,7 @@ function buttonNext_mouseOut() {
 
 function initIntroScene() {
     console.log("initIntroScene()");
+    screenNumber = 1;
     button_next.onMouseReleased = buttonNext_mouseReleased;
     button_next.onMouseOver = buttonNext_mouseOver;
     button_next.onMouseOut = buttonNext_mouseOut;
@@ -127,8 +130,7 @@ function exitIntroScene() {
     button_next.onMouseOut = undefined;
 }
 
-var ms;
-var screen = 1;
+
 
 
 function drawIntroScene() {

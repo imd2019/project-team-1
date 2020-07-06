@@ -19,8 +19,7 @@ var BWer = loadImage('Buttons_C/Button_Werbung.png');
 var BWer_hover = loadImage('Buttons_C/Button_Werbung_Text_Hover.png');
 var BZu = loadImage('Buttons_C/Button_Zubehör.png');
 var BZu_hover = loadImage('Buttons_C/Button_Zubehör_Text_Hover.png');
-
-
+var ButtonCount_PC = 0;
 
 //--------------------------------------------------------------------------------------------------------
 
@@ -37,7 +36,7 @@ function setupComputerScene() {
     computerScene.add(Button_Fernsehwerbung);
 
 
-    //BUTTON ROSENTEE
+    //BUTTON COMPUTER
 
     Button_Computer = createSprite(width / 2, height / 2);
     Button_Computer.addImage("normal", BC);
@@ -106,6 +105,13 @@ function setupComputerScene() {
 
 function Button_Fernsehwerbung_mouseReleased() {
     changeGameState(GameStates.SHOP);
+    character.changeAnimation("typing");
+    pc.changeAnimation("shining");
+    changeMoney(-8);
+    Button_Fernsehwerbung.wasPressed = true;
+    ButtonCount++;
+    ButtonCount_PC++;
+    lastButtonPressed = Button_Fernsehwerbung;
 }
 
 function Button_Fernsehwerbung_mouseOver() {
@@ -121,7 +127,13 @@ function Button_Fernsehwerbung_mouseOut() {
 
 function Button_Flyer_mouseReleased() {
     changeGameState(GameStates.SHOP);
+    character.changeAnimation("typing");
     pc.changeAnimation("shining");
+    changeMoney(-2);
+    Button_Flyer.wasPressed = true;
+    ButtonCount++;
+    ButtonCount_PC++;
+    lastButtonPressed = Button_Flyer;
 }
 
 function Button_Flyer_mouseOver() {
@@ -132,10 +144,17 @@ function Button_Flyer_mouseOut() {
     Button_Flyer.changeImage("normal");
 }
 
-//BUTTON FLYER INPUT
+//BUTTON LIEFERSERVICE INPUT
 
 function Button_Lieferservice_mouseReleased() {
     changeGameState(GameStates.SHOP);
+    character.changeAnimation("typing");
+    pc.changeAnimation("shining");
+    changeMoney(6);
+    Button_Lieferservice.wasPressed = true;
+    ButtonCount++;
+    ButtonCount_PC++;
+    lastButtonPressed = Button_Lieferservice;
 }
 
 function Button_Lieferservice_mouseOver() {
@@ -150,6 +169,13 @@ function Button_Lieferservice_mouseOut() {
 
 function Button_Mitarbeiter_mouseReleased() {
     changeGameState(GameStates.SHOP);
+    character.changeAnimation("typing");
+    pc.changeAnimation("shining");
+    changeMoney(-6);
+    Button_Mitarbeiter.wasPressed = true;
+    ButtonCount++;
+    ButtonCount_PC++;
+    lastButtonPressed = Button_Mitarbeiter;
 }
 
 function Button_Mitarbeiter_mouseOver() {
@@ -164,6 +190,15 @@ function Button_Mitarbeiter_mouseOut() {
 
 function Button_SM_mouseReleased() {
     changeGameState(GameStates.SHOP);
+    character.changeAnimation("typing");
+    pc.changeAnimation("shining");
+    changeMoney(3);
+    Button_SM.wasPressed = true;
+    ButtonCount++;
+    ButtonCount_PC++;
+    lastButtonPressed = Button_SM;
+    // Feedback.visible = true;
+    // Feedback.changeImage("sm");
 }
 
 function Button_SM_mouseOver() {
@@ -180,6 +215,11 @@ function Button_Website_mouseReleased() {
     changeGameState(GameStates.SHOP);
     character.changeAnimation("typing");
     pc.changeAnimation("shining");
+    changeMoney(3);
+    Button_Website.wasPressed = true;
+    ButtonCount++;
+    ButtonCount_PC++;
+    lastButtonPressed = Button_Website;
 }
 
 function Button_Website_mouseOver() {
@@ -195,6 +235,13 @@ function Button_Website_mouseOut() {
 
 function Button_Werbung_mouseReleased() {
     changeGameState(GameStates.SHOP);
+    character.changeAnimation("typing");
+    pc.changeAnimation("shining");
+    changeMoney(2);
+    Button_Werbung.wasPressed = true;
+    ButtonCount++;
+    ButtonCount_PC++;
+    lastButtonPressed = Button_Werbung;
 }
 
 function Button_Werbung_mouseOver() {
@@ -209,6 +256,13 @@ function Button_Werbung_mouseOut() {
 
 function Button_Zubehoer_mouseReleased() {
     changeGameState(GameStates.SHOP);
+    character.changeAnimation("typing");
+    pc.changeAnimation("shining");
+    changeMoney(3);
+    Button_Zubehoer.wasPressed = true;
+    ButtonCount++;
+    ButtonCount_PC++;
+    lastButtonPressed = Button_Zubehoer;
 }
 
 function Button_Zubehoer_mouseOver() {
@@ -220,44 +274,51 @@ function Button_Zubehoer_mouseOut() {
 }
 
 
-
-
-
 function initComputerScene() {
     console.log("initComputerScene()");
 
-    Button_SM.onMouseReleased = Button_SM_mouseReleased;
-    Button_SM.onMouseOver = Button_SM_mouseOver;
-    Button_SM.onMouseOut = Button_SM_mouseOut;
+    if (!Button_SM.wasPressed) {
+        Button_SM.onMouseReleased = Button_SM_mouseReleased;
+        Button_SM.onMouseOver = Button_SM_mouseOver;
+        Button_SM.onMouseOut = Button_SM_mouseOut;
+    }
 
-    Button_Fernsehwerbung.onMouseReleased = Button_Fernsehwerbung_mouseReleased;
-    Button_Fernsehwerbung.onMouseOver = Button_Fernsehwerbung_mouseOver;
-    Button_Fernsehwerbung.onMouseOut = Button_Fernsehwerbung_mouseOut;
+    if (!Button_Fernsehwerbung.wasPressed) {
+        Button_Fernsehwerbung.onMouseReleased = Button_Fernsehwerbung_mouseReleased;
+        Button_Fernsehwerbung.onMouseOver = Button_Fernsehwerbung_mouseOver;
+        Button_Fernsehwerbung.onMouseOut = Button_Fernsehwerbung_mouseOut;
+    }
 
-    Button_Flyer.onMouseReleased = Button_Flyer_mouseReleased;
-    Button_Flyer.onMouseOver = Button_Flyer_mouseOver;
-    Button_Flyer.onMouseOut = Button_Flyer_mouseOut;
-
-    Button_Lieferservice.onMouseReleased = Button_Lieferservice_mouseReleased;
-    Button_Lieferservice.onMouseOver = Button_Lieferservice_mouseOver;
-    Button_Lieferservice.onMouseOut = Button_Lieferservice_mouseOut;
-
-    Button_Mitarbeiter.onMouseReleased = Button_Mitarbeiter_mouseReleased;
-    Button_Mitarbeiter.onMouseOver = Button_Mitarbeiter_mouseOver;
-    Button_Mitarbeiter.onMouseOut = Button_Mitarbeiter_mouseOut;
-
-    Button_Website.onMouseReleased = Button_Website_mouseReleased;
-    Button_Website.onMouseOver = Button_Website_mouseOver;
-    Button_Website.onMouseOut = Button_Website_mouseOut;
-
-    Button_Werbung.onMouseReleased = Button_Werbung_mouseReleased;
-    Button_Werbung.onMouseOver = Button_Werbung_mouseOver;
-    Button_Werbung.onMouseOut = Button_Werbung_mouseOut;
-
-    Button_Zubehoer.onMouseReleased = Button_Zubehoer_mouseReleased;
-    Button_Zubehoer.onMouseOver = Button_Zubehoer_mouseOver;
-    Button_Zubehoer.onMouseOut = Button_Zubehoer_mouseOut;
-
+    if (!Button_Flyer.wasPressed) {
+        Button_Flyer.onMouseReleased = Button_Flyer_mouseReleased;
+        Button_Flyer.onMouseOver = Button_Flyer_mouseOver;
+        Button_Flyer.onMouseOut = Button_Flyer_mouseOut;
+    }
+    if (!Button_Lieferservice.wasPressed) {
+        Button_Lieferservice.onMouseReleased = Button_Lieferservice_mouseReleased;
+        Button_Lieferservice.onMouseOver = Button_Lieferservice_mouseOver;
+        Button_Lieferservice.onMouseOut = Button_Lieferservice_mouseOut;
+    }
+    if (!Button_Mitarbeiter.wasPressed) {
+        Button_Mitarbeiter.onMouseReleased = Button_Mitarbeiter_mouseReleased;
+        Button_Mitarbeiter.onMouseOver = Button_Mitarbeiter_mouseOver;
+        Button_Mitarbeiter.onMouseOut = Button_Mitarbeiter_mouseOut;
+    }
+    if (!Button_Website.wasPressed) {
+        Button_Website.onMouseReleased = Button_Website_mouseReleased;
+        Button_Website.onMouseOver = Button_Website_mouseOver;
+        Button_Website.onMouseOut = Button_Website_mouseOut;
+    }
+    if (!Button_Werbung.wasPressed) {
+        Button_Werbung.onMouseReleased = Button_Werbung_mouseReleased;
+        Button_Werbung.onMouseOver = Button_Werbung_mouseOver;
+        Button_Werbung.onMouseOut = Button_Werbung_mouseOut;
+    }
+    if (!Button_Zubehoer.wasPressed) {
+        Button_Zubehoer.onMouseReleased = Button_Zubehoer_mouseReleased;
+        Button_Zubehoer.onMouseOver = Button_Zubehoer_mouseOver;
+        Button_Zubehoer.onMouseOut = Button_Zubehoer_mouseOut;
+    }
 
     Button_Zubehoer.mouseActive = true;
     Button_Werbung.mouseActive = true;
@@ -324,7 +385,7 @@ function exitComputerScene() {
 
 
 function drawComputerScene() {
-    background(254, 228, 179);
+    background(backgroundColor);
 
 
 

@@ -2,22 +2,26 @@ let sketch = new p5();
 let width = 1280 //windowWidth;
 let height = 720 //windowHeight;
 
-function setup() {
-  console.log("setup");
-  sketch.createCanvas(1280, 720);
-  sketch.frameRate(30);
 
-  gameRunning = false;
-
+function preload() {
+  console.log("preload()");
   setupShopScene();
   setupGameScene();
   setupWorkbenchScene();
   setupIntroScene();
   setupKasseScene();
   setupComputerScene();
+  setupStartScene();
+  setupEndScene();
+}
 
-  changeGameState(GameStates.SHOP);
-
+function setup() {
+  console.log("setup");
+  sketch.createCanvas(1280, 720);
+  sketch.frameRate(30);
+  gameRunning = false;
+  changeGameState(GameStates.START);
+  ButtonCount = 0;
 }
 window.setup = setup;
 

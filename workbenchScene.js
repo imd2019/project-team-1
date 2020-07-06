@@ -13,6 +13,7 @@ var BRo = loadImage('Buttons/Button_Rosentee-1 (2).png');
 var BRo_hover = loadImage('Buttons/Button_Rosentee_Text_Hover.png');
 var BWo = loadImage('Buttons/Button_Workshop (2).png');
 var BWo_hover = loadImage('Buttons/Button_Workshop_Text_Hover.png');
+var ButtonCount_Workbench = 0;
 
 
 
@@ -76,9 +77,6 @@ function setupWorkbenchScene() {
     workbenchScene.add(Button_Workshop);
 
 
-
-
-
 }
 
 
@@ -86,6 +84,12 @@ function setupWorkbenchScene() {
 
 function Button_Blumenkränze_mouseReleased() {
     changeGameState(GameStates.SHOP);
+    character.changeAnimation("crafting");
+    changeMoney(1);
+    Button_Blumenkränze.wasPressed = true;
+    ButtonCount++;
+    ButtonCount_Workbench++;
+    lastButtonPressed = Button_Blumenkränze;
 }
 
 function Button_Blumenkränze_mouseOver() {
@@ -100,6 +104,12 @@ function Button_Blumenkränze_mouseOut() {
 
 function Button_Grußkarten_mouseReleased() {
     changeGameState(GameStates.SHOP);
+    character.changeAnimation("crafting");
+    changeMoney(1);
+    Button_Grußkarten.wasPressed = true;
+    ButtonCount++;
+    ButtonCount_Workbench++;
+    lastButtonPressed = Button_Grußkarten;
 }
 
 function Button_Grußkarten_mouseOver() {
@@ -114,6 +124,12 @@ function Button_Grußkarten_mouseOut() {
 
 function Button_Handyhüllen_mouseReleased() {
     changeGameState(GameStates.SHOP);
+    character.changeAnimation("crafting");
+    changeMoney(3);
+    Button_Handyhüllen.wasPressed = true;
+    ButtonCount++;
+    ButtonCount_Workbench++;
+    lastButtonPressed = Button_Handyhüllen;
 }
 
 function Button_Handyhüllen_mouseOver() {
@@ -128,6 +144,12 @@ function Button_Handyhüllen_mouseOut() {
 
 function Button_Rosentee_mouseReleased() {
     changeGameState(GameStates.SHOP);
+    character.changeAnimation("crafting");
+    changeMoney(2);
+    Button_Rosentee.wasPressed = true;
+    ButtonCount++;
+    ButtonCount_Workbench++;
+    lastButtonPressed = Button_Rosentee;
 }
 
 function Button_Rosentee_mouseOver() {
@@ -138,10 +160,16 @@ function Button_Rosentee_mouseOut() {
     Button_Rosentee.changeImage("normal");
 }
 
-//INPUT BUTTON ROSENTEE
+//INPUT BUTTON WORKSHOP
 
 function Button_Workshop_mouseReleased() {
     changeGameState(GameStates.SHOP);
+    character.changeAnimation("crafting");
+    changeMoney(3);
+    Button_Workshop.wasPressed = true;
+    ButtonCount++;
+    ButtonCount_Workbench++;
+    lastButtonPressed = Button_Workshop;
 }
 
 function Button_Workshop_mouseOver() {
@@ -152,31 +180,33 @@ function Button_Workshop_mouseOut() {
     Button_Workshop.changeImage("normal");
 }
 
-
-
-
-
 function initWorkbenchScene() {
     console.log("initWorkbenchScene()");
-    Button_Blumenkränze.onMouseReleased = Button_Blumenkränze_mouseReleased;
-    Button_Blumenkränze.onMouseOver = Button_Blumenkränze_mouseOver;
-    Button_Blumenkränze.onMouseOut = Button_Blumenkränze_mouseOut;
-
-    Button_Grußkarten.onMouseReleased = Button_Grußkarten_mouseReleased;
-    Button_Grußkarten.onMouseOver = Button_Grußkarten_mouseOver;
-    Button_Grußkarten.onMouseOut = Button_Grußkarten_mouseOut;
-
-    Button_Handyhüllen.onMouseReleased = Button_Handyhüllen_mouseReleased;
-    Button_Handyhüllen.onMouseOver = Button_Handyhüllen_mouseOver;
-    Button_Handyhüllen.onMouseOut = Button_Handyhüllen_mouseOut;
-
-    Button_Rosentee.onMouseReleased = Button_Rosentee_mouseReleased;
-    Button_Rosentee.onMouseOver = Button_Rosentee_mouseOver;
-    Button_Rosentee.onMouseOut = Button_Rosentee_mouseOut;
-
-    Button_Workshop.onMouseReleased = Button_Workshop_mouseReleased;
-    Button_Workshop.onMouseOver = Button_Workshop_mouseOver;
-    Button_Workshop.onMouseOut = Button_Workshop_mouseOut;
+    if (!Button_Blumenkränze.wasPressed) {
+        Button_Blumenkränze.onMouseReleased = Button_Blumenkränze_mouseReleased;
+        Button_Blumenkränze.onMouseOver = Button_Blumenkränze_mouseOver;
+        Button_Blumenkränze.onMouseOut = Button_Blumenkränze_mouseOut;
+    }
+    if (!Button_Grußkarten.wasPressed) {
+        Button_Grußkarten.onMouseReleased = Button_Grußkarten_mouseReleased;
+        Button_Grußkarten.onMouseOver = Button_Grußkarten_mouseOver;
+        Button_Grußkarten.onMouseOut = Button_Grußkarten_mouseOut;
+    }
+    if (!Button_Handyhüllen.wasPressed) {
+        Button_Handyhüllen.onMouseReleased = Button_Handyhüllen_mouseReleased;
+        Button_Handyhüllen.onMouseOver = Button_Handyhüllen_mouseOver;
+        Button_Handyhüllen.onMouseOut = Button_Handyhüllen_mouseOut;
+    }
+    if (!Button_Rosentee.wasPressed) {
+        Button_Rosentee.onMouseReleased = Button_Rosentee_mouseReleased;
+        Button_Rosentee.onMouseOver = Button_Rosentee_mouseOver;
+        Button_Rosentee.onMouseOut = Button_Rosentee_mouseOut;
+    }
+    if (!Button_Workshop.wasPressed) {
+        Button_Workshop.onMouseReleased = Button_Workshop_mouseReleased;
+        Button_Workshop.onMouseOver = Button_Workshop_mouseOver;
+        Button_Workshop.onMouseOut = Button_Workshop_mouseOut;
+    }
 
 }
 
@@ -211,7 +241,7 @@ function exitWorkbenchScene() {
 
 
 function drawWorkbenchScene() {
-    background(254, 228, 179);
+    background(backgroundColor);
 
 
     drawSprites(workbenchScene);

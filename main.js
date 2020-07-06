@@ -3,6 +3,8 @@ var CanvasHeight = 1080;
 var gameRunning;
 var gameState;
 var Umsatz;
+var ButtonCount;
+var lastButtonPressed;
 
 const GameStates = {
     SHOP: 0,
@@ -11,6 +13,8 @@ const GameStates = {
     INTRO: 3,
     KASSE: 4,
     COMPUTER: 5,
+    START: 6,
+    END: 7
 };
 
 //--------------------------------------------------------------------------------------------------------
@@ -42,6 +46,12 @@ function draw() {
     if (gameState == GameStates.COMPUTER) {
         drawComputerScene();
     }
+    if (gameState == GameStates.START) {
+        drawStartScene();
+    }
+    if (gameState == GameStates.END) {
+        drawEndScene();
+    }
 }
 
 //--------------------------------------------------------------------------------------------------------
@@ -66,6 +76,14 @@ function changeGameState(newState) {
     if (gameState == GameStates.COMPUTER) {
         exitComputerScene();
     }
+    if (gameState == GameStates.START) {
+        exitStartScene();
+    }
+    if (gameState == GameStates.END) {
+        exitENDScene();
+    }
+
+
 
 
     if (newState == GameStates.SHOP) {
@@ -85,6 +103,12 @@ function changeGameState(newState) {
     }
     if (newState == GameStates.COMPUTER) {
         initComputerScene();
+    }
+    if (newState == GameStates.START) {
+        initStartScene();
+    }
+    if (newState == GameStates.END) {
+        initEndScene();
     }
 
 
