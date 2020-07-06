@@ -444,8 +444,8 @@ function drawShopScene() {
             break;
     }
 
-    let lastBaumState = Math.floor((lastUmsatz / 28) * 30);
-    let baumState = Math.floor((Umsatz / 28) * 30);
+    let lastBaumState = Math.floor((lastUmsatz / 28) * 29);
+    let baumState = Math.floor((Umsatz / 28) * 29);
 
     if (geldBaumAnimSequenceRequested) { // Umsatz hat sich gegenüber letztem Frame geändert -> sequenz
         switch (geldbaumSequenceState) {
