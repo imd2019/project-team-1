@@ -111,6 +111,7 @@ function Button_Fernsehwerbung_mouseReleased() {
     Button_Fernsehwerbung.wasPressed = true;
     ButtonCount++;
     ButtonCount_PC++;
+    geldBaumAnimSequenceRequested = true;
     lastButtonPressed = Button_Fernsehwerbung;
 }
 
@@ -134,6 +135,7 @@ function Button_Flyer_mouseReleased() {
     ButtonCount++;
     ButtonCount_PC++;
     lastButtonPressed = Button_Flyer;
+    geldBaumAnimSequenceRequested = true;
 }
 
 function Button_Flyer_mouseOver() {
@@ -155,6 +157,7 @@ function Button_Lieferservice_mouseReleased() {
     ButtonCount++;
     ButtonCount_PC++;
     lastButtonPressed = Button_Lieferservice;
+    geldBaumAnimSequenceRequested = true;
 }
 
 function Button_Lieferservice_mouseOver() {
@@ -176,6 +179,7 @@ function Button_Mitarbeiter_mouseReleased() {
     ButtonCount++;
     ButtonCount_PC++;
     lastButtonPressed = Button_Mitarbeiter;
+    geldBaumAnimSequenceRequested = true;
 }
 
 function Button_Mitarbeiter_mouseOver() {
@@ -197,6 +201,7 @@ function Button_SM_mouseReleased() {
     ButtonCount++;
     ButtonCount_PC++;
     lastButtonPressed = Button_SM;
+    geldBaumAnimSequenceRequested = true;
     // Feedback.visible = true;
     // Feedback.changeImage("sm");
 }
@@ -220,6 +225,7 @@ function Button_Website_mouseReleased() {
     ButtonCount++;
     ButtonCount_PC++;
     lastButtonPressed = Button_Website;
+    geldBaumAnimSequenceRequested = true;
 }
 
 function Button_Website_mouseOver() {
@@ -242,6 +248,7 @@ function Button_Werbung_mouseReleased() {
     ButtonCount++;
     ButtonCount_PC++;
     lastButtonPressed = Button_Werbung;
+    geldBaumAnimSequenceRequested = true;
 }
 
 function Button_Werbung_mouseOver() {
@@ -263,6 +270,7 @@ function Button_Zubehoer_mouseReleased() {
     ButtonCount++;
     ButtonCount_PC++;
     lastButtonPressed = Button_Zubehoer;
+    geldBaumAnimSequenceRequested = true;
 }
 
 function Button_Zubehoer_mouseOver() {

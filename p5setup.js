@@ -20,7 +20,7 @@ function setup() {
   sketch.createCanvas(1280, 720);
   sketch.frameRate(30);
   gameRunning = false;
-  changeGameState(GameStates.START);
+  changeGameState(GameStates.END);
   ButtonCount = 0;
 }
 window.setup = setup;

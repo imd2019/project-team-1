@@ -1,6 +1,6 @@
-// menuScene variables
+// shopScene variables
 
-var menuScene;
+var shopScene;
 
 
 var marvin = loadImage('Marvin_Laden/Marvin fliegt_1.png');
@@ -40,7 +40,7 @@ var feedback_Rosentee = loadImage('Feedback/Marvin_Gut_Rosentee.png');
 var feedback_Workshop = loadImage('Feedback/Marvin_Gut_Workshop.png');
 
 
-
+var geldBaumAnimSequenceRequested = false;
 var geldbaumSequenceState = 0;
 var geldBaumAnimPlaying = false;
 
@@ -66,7 +66,7 @@ var character_state = CharacterStates.IDLE_LEFT;
 //--------------------------------------------------------------------------------------------------------
 
 function setupShopScene() {
-    menuScene = new Group();
+    shopScene = new Group();
     pressed = false;
     Umsatz = 0;
     lastUmsatz = 0;
@@ -78,7 +78,7 @@ function setupShopScene() {
     foreground2.addImage("stage2", fg2);
     foreground2.addImage("stage3", fg3);
     foreground2.addImage("stage4", fg4);
-    menuScene.add(foreground2);
+    shopScene.add(foreground2);
 
     //WORKBENCH
 
@@ -86,8 +86,41 @@ function setupShopScene() {
     workbench.addImage("normal", wb_texture);
     workbench.addImage("hover", wb_hover);
     workbench.scale = 0.15;
-    menuScene.add(workbench);
+    shopScene.add(workbench);
     workbench.mouseActive = true;
+
+
+    //KALENDER
+
+    cal = createSprite(width / 2 - 270, height / 2 - 40);
+    cal.addImage(cal_idle);
+    let april = loadAnimation("CalendarApril/1.png", "CalendarApril/2.png", "CalendarApril/3.png", "CalendarApril/4.png", "CalendarApril/5.png", "CalendarApril/6.png", "CalendarApril/7.png", "CalendarMay/1.png");
+    let may = loadAnimation("CalendarMay/1.png", "CalendarMay/2.png", "CalendarMay/3.png", "CalendarMay/4.png", "CalendarMay/5.png", "CalendarMay/6.png", "CalendarMay/7.png", "CalendarJune/1.png");
+    let june = loadAnimation("CalendarJune/1.png", "CalendarJune/2.png", "CalendarJune/3.png", "CalendarJune/4.png", "CalendarJune/5.png", "CalendarJune/6.png", "CalendarJune/7.png", "CalendarJuly/1.png");
+    let july = loadAnimation("CalendarJuly/1.png", "CalendarJuly/2.png", "CalendarJuly/3.png", "CalendarJuly/4.png", "CalendarJuly/5.png", "CalendarJuly/6.png", "CalendarJuly/7.png", "CalendarAug/1.png");
+    let aug = loadAnimation("CalendarAug/1.png", "CalendarAug/2.png", "CalendarAug/3.png", "CalendarAug/4.png", "CalendarAug/5.png", "CalendarAug/6.png", "CalendarAug/7.png", "CalendarSep/1.png");
+    let sep = loadAnimation("CalendarSep/1.png", "CalendarSep/2.png", "CalendarSep/3.png", "CalendarSep/4.png", "CalendarSep/5.png", "CalendarSep/6.png", "CalendarSep/7.png", "CalendarSep/8.png");
+    april.looping = false;
+    april.frameDelay = 4;
+    may.looping = false;
+    may.frameDelay = 4;
+    june.looping = false;
+    june.frameDelay = 4;
+    july.looping = false;
+    july.frameDelay = 4;
+    aug.looping = false;
+    aug.frameDelay = 4;
+    sep.looping = false;
+    sep.frameDelay = 4;
+    cal.addAnimation('change', april);
+    cal.addAnimation('change2', may);
+    cal.addAnimation('change3', june);
+    cal.addAnimation('change4', july);
+    cal.addAnimation('change5', aug);
+    cal.addAnimation('change6', sep);
+    cal.scale = 0.25;
+    cal.visible = true;
+    shopScene.add(cal);
 
     //CHARACTER
 
@@ -99,7 +132,7 @@ function setupShopScene() {
     character.addAnimation('typing', 'Tippen/tippen1.png', 'Tippen/tippen6.png');
     character.addAnimation('crafting', 'Basteln/basteln1.png', 'Basteln/basteln8.png');
     character.scale = 0.9;
-    menuScene.add(character);
+    shopScene.add(character);
 
 
 
@@ -107,7 +140,7 @@ function setupShopScene() {
 
     foreground = createSprite(width / 2, height / 2);
     foreground.addImage(fg);
-    menuScene.add(foreground);
+    shopScene.add(foreground);
 
 
     //PC
@@ -117,7 +150,7 @@ function setupShopScene() {
     pc.addImage("hover", pc_hover);
     pc.addAnimation('shining', 'PC_Shiny/shiny1.png', 'PC_Shiny/shiny3.png');
     pc.scale = 0.17;
-    menuScene.add(pc);
+    shopScene.add(pc);
     pc.mouseActive = true;
 
     //CASHREGISTER
@@ -127,7 +160,7 @@ function setupShopScene() {
     cash_register.addImage("hover", cash_hover);
     cash_register.addAnimation("shine", 'Kasse_Glow/1.png', 'Kasse_Glow/6.png')
     cash_register.scale = 0.17;
-    menuScene.add(cash_register);
+    shopScene.add(cash_register);
 
 
     //GELDBAUM
@@ -152,40 +185,7 @@ function setupShopScene() {
 
 
     Geldbaum.scale = 0.15;
-    menuScene.add(Geldbaum);
-
-
-    //KALENDER
-
-    cal = createSprite(1100, 100);
-    cal.addImage(cal_idle);
-    let april = loadAnimation("CalendarApril/1.png", "CalendarApril/2.png", "CalendarApril/3.png", "CalendarApril/4.png", "CalendarApril/5.png", "CalendarApril/6.png", "CalendarApril/7.png");
-    let may = loadAnimation("CalendarMay/1.png", "CalendarMay/2.png", "CalendarMay/3.png", "CalendarMay/4.png", "CalendarMay/5.png", "CalendarMay/6.png", "CalendarMay/7.png");
-    let june = loadAnimation("CalendarJune/1.png", "CalendarJune/2.png", "CalendarJune/3.png", "CalendarJune/4.png", "CalendarJune/5.png", "CalendarJune/6.png", "CalendarJune/7.png");
-    let july = loadAnimation("CalendarJuly/1.png", "CalendarJuly/2.png", "CalendarJuly/3.png", "CalendarJuly/4.png", "CalendarJuly/5.png", "CalendarJuly/6.png", "CalendarJuly/7.png");
-    let aug = loadAnimation("CalendarAug/1.png", "CalendarAug/2.png", "CalendarAug/3.png", "CalendarAug/4.png", "CalendarAug/5.png", "CalendarAug/6.png", "CalendarAug/7.png");
-    let sep = loadAnimation("CalendarSep/1.png", "CalendarSep/2.png", "CalendarSep/3.png", "CalendarSep/4.png", "CalendarSep/5.png", "CalendarSep/6.png", "CalendarSep/7.png");
-    april.looping = false;
-    april.frameDelay = 8;
-    may.looping = false;
-    may.frameDelay = 8;
-    june.looping = false;
-    june.frameDelay = 8;
-    july.looping = false;
-    july.frameDelay = 8;
-    aug.looping = false;
-    aug.frameDelay = 8;
-    sep.looping = false;
-    sep.frameDelay = 8;
-    cal.addAnimation('change', april);
-    cal.addAnimation('change2', may);
-    cal.addAnimation('change3', june);
-    cal.addAnimation('change4', july);
-    cal.addAnimation('change5', aug);
-    cal.addAnimation('change6', sep);
-    cal.scale = 0.3;
-    cal.visible = false;
-    menuScene.add(cal);
+    shopScene.add(Geldbaum);
 
 
 
@@ -213,7 +213,7 @@ function setupShopScene() {
         'Marvin_Laden/Marvin fliegt_18.png'
     );
     Marvin.scale = 0.15;
-    menuScene.add(Marvin);
+    shopScene.add(Marvin);
 
 
     //KUNDE 1
@@ -223,7 +223,7 @@ function setupShopScene() {
     // Kunde1.addAnimation('walking', 'Kunde_Laufen/1.png', 'Kunde_Laufen/24.png');
     // Kunde1.scale = 0.2;
     // Kunde1.visible = false;
-    // menuScene.add(Kunde1);
+    // shopScene.add(Kunde1);
 
     //FEEDBACK
 
@@ -249,7 +249,7 @@ function setupShopScene() {
 
     Feedback.scale = 0.2;
     Feedback.visible = false;
-    menuScene.add(Feedback);
+    shopScene.add(Feedback);
 
 }
 
@@ -306,18 +306,7 @@ function workbench_mouseOut() {
 
 function initShopScene() {
     console.log("initShopScene()");
-    cash_register.onMouseReleased = cash_register_mouseReleased;
-    cash_register.onMouseOver = cash_register_mouseOver;
-    cash_register.onMouseOut = cash_register_mouseOut;
-
-    pc.onMouseReleased = pc_mouseReleased;
-    pc.onMouseOver = pc_mouseOver;
-    pc.onMouseOut = pc_mouseOut;
-
-    workbench.onMouseReleased = workbench_mouseReleased;
-    workbench.onMouseOver = workbench_mouseOver;
-    workbench.onMouseOut = workbench_mouseOut;
-
+    activateAllShopButtons();
 
     character_state = CharacterStates.IDLE_LEFT;
     character.changeImage('left');
@@ -329,18 +318,7 @@ function initShopScene() {
 
 function exitShopScene() {
     console.log("exitShopScene()");
-
-    cash_register.onMouseReleased = undefined;
-    cash_register.onMouseOver = undefined;
-    cash_register.onMouseOut = undefined;
-
-    pc.onMouseReleased = undefined;
-    pc.onMouseOver = undefined;
-    pc.onMouseOut = undefined;
-
-    workbench.onMouseReleased = undefined;
-    workbench.onMouseOver = undefined;
-    workbench.onMouseOut = undefined;
+    deactivateAllShopButtons();
 }
 
 
@@ -469,9 +447,13 @@ function drawShopScene() {
     let lastBaumState = Math.floor((lastUmsatz / 28) * 30);
     let baumState = Math.floor((Umsatz / 28) * 30);
 
-    if (lastBaumState != baumState || lastButtonPressed != undefined) { // Umsatz hat sich gegenüber letztem Frame geändert -> sequenz
+    if (geldBaumAnimSequenceRequested) { // Umsatz hat sich gegenüber letztem Frame geändert -> sequenz
         switch (geldbaumSequenceState) {
-            case (0): // Feedback animation
+            case (0):
+                deactivateAllShopButtons();
+                geldbaumSequenceState++;
+                break;
+            case (1): // Feedback animation
                 console.log("Play Feedback Animation till done");
                 if (Feedback.visible) {
                     if (mouseIsPressed) {
@@ -549,15 +531,25 @@ function drawShopScene() {
                 }
                 break;
 
-            case (1): // Geldbaum Animation
+            case (2):
+                changeCalendar();
+                geldbaumSequenceState++
+                break;
+            case (3): // Geldbaum Animation
                 geldBaumAnimationDelay--;
                 if (geldBaumAnimationDelay <= 0) {
                     if (!geldBaumAnimPlaying) {
-                        console.log("Start geldbaum animation");
+                        console.log("Start geldbaum animation. lastBaumState=" + lastBaumState + ", baumState=" + baumState);
                         Geldbaum.animCnt = Math.abs(lastBaumState - baumState);
-                        lastBaumFrame = baumState;
-                        Geldbaum.animation.goToFrame(baumState);
-                        geldBaumAnimPlaying = true;
+                        if (Geldbaum.animCnt == 0) { // no frame change needed
+                            geldBaumAnimationDelay = geldBaumDelay;
+                            geldbaumSequenceState++;
+                            geldBaumAnimPlaying = false;
+                        } else {
+                            lastBaumFrame = baumState;
+                            Geldbaum.animation.goToFrame(baumState);
+                            geldBaumAnimPlaying = true;
+                        }
                     } else { // already playing
                         console.log("Run geldbaum animation");
                         if (Geldbaum.animation.getFrame() != lastBaumFrame) {
@@ -575,77 +567,58 @@ function drawShopScene() {
                 }
                 break;
 
-            case (2): // Ende der Sequenz
-                console.log("End of sequence");
-                baumState = lastBaumState;
-                lastUmsatz = Umsatz;
-                geldbaumSequenceState = 0;
+            case (4): // Ende der Sequenz
+                if (ButtonCount == 12) {
+                    changeGameState(GameStates.END);
+                } else {
+                    console.log("End of sequence");
+                    baumState = lastBaumState;
+                    lastUmsatz = Umsatz;
+                    geldbaumSequenceState = 0;
+                    geldBaumAnimSequenceRequested = false;
+                    activateAllShopButtons();
+                }
                 break;
         }
 
     }
 
+
+
+
+
+
+
+    drawSprites(shopScene);
+}
+
+function changeCalendar() {
     if (ButtonCount === 2) {
         cal.visible = true;
         cal.changeAnimation("change");
-        if (cal.animation.getFrame() == cal.animation.getLastFrame()) {
-            cal.visible = false;
-        }
     }
     if (ButtonCount === 4) {
         cal.visible = true;
         cal.changeAnimation("change2");
-        if (cal.animation.getFrame() == cal.animation.getLastFrame()) {
-            cal.visible = false;
-        }
     }
     if (ButtonCount === 6) {
         cal.visible = true;
         cal.changeAnimation("change3");
-        if (cal.animation.getFrame() == cal.animation.getLastFrame()) {
-            cal.visible = false;
-        }
     }
     if (ButtonCount === 8) {
         cal.visible = true;
         cal.changeAnimation("change4");
-        if (cal.animation.getFrame() == cal.animation.getLastFrame()) {
-            cal.visible = false;
-        }
     }
     if (ButtonCount === 10) {
         cal.visible = true;
         cal.changeAnimation("change5");
-        if (cal.animation.getFrame() == cal.animation.getLastFrame()) {
-            cal.visible = false;
-        }
     }
     if (ButtonCount === 12) {
         cal.visible = true;
         cal.changeAnimation("change6");
-        if (cal.animation.getFrame() == cal.animation.getLastFrame()) {
-            cal.visible = false;
-        }
-        changeGameState(GameStates.END);
     }
-
-    // if (ButtonCount === 2) {
-    //     Kunde1.visible = true;
-    //     Kunde1.changeAnimation("walking");
-    //     if (Kunde1.position.x > -100) {
-    //         Kunde1.position.x -= 7;
-    //     } else {
-    //         Kunde1.changeImage("idle");
-    //         Kunde1.visible = false;
-    //     }
-    // }
-
-
-
-
-
-    drawSprites(menuScene);
 }
+
 
 function changeMoney(amount) {
     Umsatz += amount;
@@ -655,4 +628,33 @@ function changeMoney(amount) {
         Umsatz = 0;
     }
     console.log("Umsatz :" + Umsatz);
+}
+
+function deactivateAllShopButtons() {
+    cash_register.onMouseReleased = undefined;
+    cash_register.onMouseOver = undefined;
+    cash_register.onMouseOut = undefined;
+
+    pc.onMouseReleased = undefined;
+    pc.onMouseOver = undefined;
+    pc.onMouseOut = undefined;
+
+    workbench.onMouseReleased = undefined;
+    workbench.onMouseOver = undefined;
+    workbench.onMouseOut = undefined;
+}
+
+function activateAllShopButtons() {
+    cash_register.onMouseReleased = cash_register_mouseReleased;
+    cash_register.onMouseOver = cash_register_mouseOver;
+    cash_register.onMouseOut = cash_register_mouseOut;
+
+    pc.onMouseReleased = pc_mouseReleased;
+    pc.onMouseOver = pc_mouseOver;
+    pc.onMouseOut = pc_mouseOut;
+
+    workbench.onMouseReleased = workbench_mouseReleased;
+    workbench.onMouseOver = workbench_mouseOver;
+    workbench.onMouseOut = workbench_mouseOut;
+
 }

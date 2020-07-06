@@ -90,6 +90,7 @@ function Button_Blumenkränze_mouseReleased() {
     ButtonCount++;
     ButtonCount_Workbench++;
     lastButtonPressed = Button_Blumenkränze;
+    geldBaumAnimSequenceRequested = true;
 }
 
 function Button_Blumenkränze_mouseOver() {
@@ -110,6 +111,7 @@ function Button_Grußkarten_mouseReleased() {
     ButtonCount++;
     ButtonCount_Workbench++;
     lastButtonPressed = Button_Grußkarten;
+    geldBaumAnimSequenceRequested = true;
 }
 
 function Button_Grußkarten_mouseOver() {
@@ -130,6 +132,7 @@ function Button_Handyhüllen_mouseReleased() {
     ButtonCount++;
     ButtonCount_Workbench++;
     lastButtonPressed = Button_Handyhüllen;
+    geldBaumAnimSequenceRequested = true;
 }
 
 function Button_Handyhüllen_mouseOver() {
@@ -150,6 +153,7 @@ function Button_Rosentee_mouseReleased() {
     ButtonCount++;
     ButtonCount_Workbench++;
     lastButtonPressed = Button_Rosentee;
+    geldBaumAnimSequenceRequested = true;
 }
 
 function Button_Rosentee_mouseOver() {
@@ -170,6 +174,7 @@ function Button_Workshop_mouseReleased() {
     ButtonCount++;
     ButtonCount_Workbench++;
     lastButtonPressed = Button_Workshop;
+    geldBaumAnimSequenceRequested = true;
 }
 
 function Button_Workshop_mouseOver() {

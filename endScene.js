@@ -2,6 +2,8 @@
 
 var endScene;
 var end_idle = loadImage('EndNegative/1.png');
+var BMenu = loadImage('Buttons/Button_Neustart.png');
+var BMenu_hover = loadImage('Buttons/Button_Neustart_Hover.png');
 
 //--------------------------------------------------------------------------------------------------------
 
@@ -23,11 +25,46 @@ function setupEndScene() {
     end.visible = true;
     endScene.add(end);
     endScene.add(Geldbaum);
+
+    //BACK TO MENU BUTTON
+
+    Button_BackToMenu = createSprite(width / 2, 600);
+    Button_BackToMenu.addImage("normal", BMenu);
+    Button_BackToMenu.addImage("hover", BMenu_hover);
+    Button_BackToMenu.scale = 0.17;
+    endScene.add(Button_BackToMenu);
+
+
 }
+
+//INPUT BUTTON START
+
+function Button_BackToMenu_mouseReleased() {
+    changeGameState(GameStates.START);
+}
+
+function Button_BackToMenu_mouseOver() {
+    Button_BackToMenu.changeImage("hover");
+}
+
+function Button_BackToMenu_mouseOut() {
+    Button_BackToMenu.changeImage("normal");
+}
+
 
 function initEndScene() {
     Geldbaum.position.x = -60;
     Geldbaum.position.y = 400;
+    Button_BackToMenu.onMouseReleased = Button_BackToMenu_mouseReleased;
+    Button_BackToMenu.onMouseOver = Button_BackToMenu_mouseOver;
+    Button_BackToMenu.onMouseOut = Button_BackToMenu_mouseOut;
+
+}
+
+function exitEndScene() {
+    Button_BackToMenu.onMouseReleased = undefined;
+    Button_BackToMenu.onMouseOver = undefined;
+    Button_BackToMenu.onMouseOut = undefined;
 
 }
 

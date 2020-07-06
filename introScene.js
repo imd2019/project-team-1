@@ -118,6 +118,7 @@ function buttonNext_mouseOut() {
 function initIntroScene() {
     console.log("initIntroScene()");
     screenNumber = 1;
+    intro0.changeAnimation("screen1");
     button_next.onMouseReleased = buttonNext_mouseReleased;
     button_next.onMouseOver = buttonNext_mouseOver;
     button_next.onMouseOut = buttonNext_mouseOut;

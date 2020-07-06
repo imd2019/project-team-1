@@ -61,6 +61,7 @@ function Button_Angebot_mouseReleased() {
     changeGameState(GameStates.SHOP);
     character.changeAnimation("typing");
     cash_register.changeAnimation("shine");
+    geldBaumAnimSequenceRequested = true;
 }
 
 function Button_Angebot_mouseOver() {
@@ -82,6 +83,7 @@ function Button_Preise_mouseReleased() {
     lastButtonPressed = Button_Preise;
     Button_Preise.wasPressed = true;
     console.log(ButtonCount);
+    geldBaumAnimSequenceRequested = true;
 
 }
 
@@ -102,6 +104,7 @@ function Button_Renovieren_mouseReleased() {
     ButtonCount_Cash++;
     lastButtonPressed = Button_Renovieren;
     Button_Renovieren.wasPressed = true;
+    geldBaumAnimSequenceRequested = true;
 }
 
 function Button_Renovieren_mouseOver() {
@@ -111,10 +114,6 @@ function Button_Renovieren_mouseOver() {
 function Button_Renovieren_mouseOut() {
     Button_Renovieren.changeImage("normal");
 }
-
-
-
-
 
 
 function initKassenScene() {

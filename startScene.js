@@ -67,6 +67,44 @@ function initStartScene() {
     Button_Start.onMouseReleased = Button_Start_mouseReleased;
     Button_Start.onMouseOver = Button_Start_mouseOver;
     Button_Start.onMouseOut = Button_Start_mouseOut;
+
+
+    Umsatz = 0;
+    lastUmsatz = 0;
+    ButtonCount_PC = 0;
+    ButtonCount = 0;
+    ButtonCount_Workbench = 0;
+    ButtonCount_Cashregister = 0;
+    lastButtonPressed = undefined;
+    Button_Preise.wasPressed = false;
+    Button_Renovieren.mouseActive = false;
+    Button_Angebot.wasPressed = false;
+    Button_Fernsehwerbung.wasPressed = false;
+    Button_Flyer.wasPressed = false;
+    Button_Lieferservice.wasPressed = false;
+    Button_Mitarbeiter.wasPressed = false;
+    Button_SM.wasPressed = false;
+    Button_Website.wasPressed = false;
+    Button_Werbung.wasPressed = false;
+    Button_Zubehoer.wasPressed = false;
+    Button_Blumenkränze.wasPressed = false;
+    Button_Grußkarten.wasPressed = false;
+    Button_Handyhüllen.wasPressed = false;
+    Button_Rosentee.wasPressed = false;
+    Button_Workshop.wasPressed = false;
+    cal.changeImage(cal_idle);
+
+    screenNumber = 1;
+    Geldbaum.position.x = 670;
+    Geldbaum.position.y = 440;
+
+    Geldbaum.animation.rewind();
+    geldBaumAnimSequenceRequested = false;
+    geldbaumSequenceState = 0;
+    cal.changeAnimation("change");
+    cal.animation.rewind();
+    cal.animation.stop();
+
 }
 
 function exitStartScene() {
@@ -80,6 +118,7 @@ function exitStartScene() {
 }
 
 function drawStartScene() {
+    clear();
     background(startscreen);
     drawSprites(startScene);
 }

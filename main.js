@@ -80,7 +80,7 @@ function changeGameState(newState) {
         exitStartScene();
     }
     if (gameState == GameStates.END) {
-        exitENDScene();
+        exitEndScene();
     }
 
 
