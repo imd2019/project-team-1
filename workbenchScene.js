@@ -13,8 +13,9 @@ var BRo = loadImage('Buttons/Button_Rosentee-1 (2).png');
 var BRo_hover = loadImage('Buttons/Button_Rosentee_Text_Hover.png');
 var BWo = loadImage('Buttons/Button_Workshop (2).png');
 var BWo_hover = loadImage('Buttons/Button_Workshop_Text_Hover.png');
+var bbts = loadImage('Buttons/Button_BackToMenu.png');
+var bbts_hover = loadImage('Buttons/Button_BackToMenu_Hover.png');
 var ButtonCount_Workbench = 0;
-
 
 
 
@@ -22,6 +23,15 @@ var ButtonCount_Workbench = 0;
 
 function setupWorkbenchScene() {
     workbenchScene = new Group();
+
+    //BUTTON BACKTOSHOP
+
+    Button_BackToShop = createSprite(110, 50);
+    Button_BackToShop.addImage("normal", bbts);
+    Button_BackToShop.addImage("hover", bbts_hover);
+    Button_BackToShop.scale = 0.1;
+
+    workbenchScene.add(Button_BackToShop);
 
     //BUTTON BLUMENKRÄNZE
 
@@ -79,6 +89,19 @@ function setupWorkbenchScene() {
 
 }
 
+//INPUT BUTTON BACKTOSHOP
+
+function Button_BackToShop_mouseReleased() {
+    changeGameState(GameStates.SHOP);
+}
+
+function Button_BackToShop_mouseOver() {
+    Button_BackToShop.changeImage("hover");
+}
+
+function Button_BackToShop_mouseOut() {
+    Button_BackToShop.changeImage("normal");
+}
 
 //INPUT BUTTON BLUMENKRÄNZE
 
@@ -213,6 +236,12 @@ function initWorkbenchScene() {
         Button_Workshop.onMouseOut = Button_Workshop_mouseOut;
     }
 
+    Button_BackToShop.onMouseReleased = Button_BackToShop_mouseReleased;
+    Button_BackToShop.onMouseOver = Button_BackToShop_mouseOver;
+    Button_BackToShop.onMouseOut = Button_BackToShop_mouseOut;
+
+
+
 }
 
 function exitWorkbenchScene() {
@@ -242,6 +271,11 @@ function exitWorkbenchScene() {
     Button_Workshop.onMouseOver = undefined;
     Button_Workshop.onMouseOut = undefined;
     Button_Workshop.changeImage("normal");
+
+    Button_BackToShop.onMouseReleased = undefined;
+    Button_BackToShop.onMouseOver = undefined;
+    Button_BackToShop.onMouseOut = undefined;
+    Button_BackToShop.changeImage("normal");
 }
 
 

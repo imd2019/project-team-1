@@ -92,7 +92,6 @@ function initStartScene() {
     Button_Handyhüllen.wasPressed = false;
     Button_Rosentee.wasPressed = false;
     Button_Workshop.wasPressed = false;
-    cal.changeImage(cal_idle);
 
     screenNumber = 1;
     Geldbaum.position.x = 670;

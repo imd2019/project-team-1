@@ -98,6 +98,9 @@ function setupComputerScene() {
     Button_Zubehoer.addImage("hover", BZu_hover);
     Button_Zubehoer.scale = 0.18;
     computerScene.add(Button_Zubehoer);
+
+    //BACK TO SHOP BUTTON
+    computerScene.add(Button_BackToShop);
 }
 
 
@@ -122,6 +125,8 @@ function Button_Fernsehwerbung_mouseOver() {
 function Button_Fernsehwerbung_mouseOut() {
     Button_Fernsehwerbung.changeImage("normal");
 }
+
+
 
 
 //BUTTON FLYER INPUT
@@ -328,6 +333,11 @@ function initComputerScene() {
         Button_Zubehoer.onMouseOut = Button_Zubehoer_mouseOut;
     }
 
+
+    Button_BackToShop.onMouseReleased = Button_BackToShop_mouseReleased;
+    Button_BackToShop.onMouseOver = Button_BackToShop_mouseOver;
+    Button_BackToShop.onMouseOut = Button_BackToShop_mouseOut;
+
     Button_Zubehoer.mouseActive = true;
     Button_Werbung.mouseActive = true;
     Button_Website.mouseActive = true;
@@ -389,6 +399,12 @@ function exitComputerScene() {
     Button_Lieferservice.mouseActive = false;
     Button_Flyer.mouseActive = false;
     Button_Fernsehwerbung.mouseActive = false;
+
+
+    Button_BackToShop.onMouseReleased = undefined;
+    Button_BackToShop.onMouseOver = undefined;
+    Button_BackToShop.onMouseOut = undefined;
+    Button_BackToShop.changeImage("normal");
 }
 
 

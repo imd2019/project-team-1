@@ -7,6 +7,7 @@ var bn_hover = loadImage('Einführung_button/button_weiter_hover.png');
 var i = loadImage('Graphics/introscreen1.png');
 var i1 = loadImage('Graphics/introscreen1.png');
 
+
 var ms;
 var screenNumber = 1;
 
@@ -14,6 +15,9 @@ var screenNumber = 1;
 
 function setupIntroScene() {
     introScene = new Group();
+
+
+
 
     //BUTTON NEXT
 
@@ -118,7 +122,7 @@ function buttonNext_mouseOut() {
 function initIntroScene() {
     console.log("initIntroScene()");
     screenNumber = 1;
-    intro0.changeAnimation("screen1");
+    //intro0.changeAnimation("screen1");
     button_next.onMouseReleased = buttonNext_mouseReleased;
     button_next.onMouseOver = buttonNext_mouseOver;
     button_next.onMouseOut = buttonNext_mouseOut;

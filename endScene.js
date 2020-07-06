@@ -35,6 +35,7 @@ function setupEndScene() {
     endScene.add(Button_BackToMenu);
 
 
+
 }
 
 //INPUT BUTTON START
@@ -58,7 +59,6 @@ function initEndScene() {
     Button_BackToMenu.onMouseReleased = Button_BackToMenu_mouseReleased;
     Button_BackToMenu.onMouseOver = Button_BackToMenu_mouseOver;
     Button_BackToMenu.onMouseOut = Button_BackToMenu_mouseOut;
-
 }
 
 function exitEndScene() {

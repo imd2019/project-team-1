@@ -596,26 +596,32 @@ function changeCalendar() {
     if (ButtonCount === 2) {
         cal.visible = true;
         cal.changeAnimation("change");
+        cal.animation.play();
     }
     if (ButtonCount === 4) {
         cal.visible = true;
         cal.changeAnimation("change2");
+        cal.animation.play();
     }
     if (ButtonCount === 6) {
         cal.visible = true;
         cal.changeAnimation("change3");
+        cal.animation.play();
     }
     if (ButtonCount === 8) {
         cal.visible = true;
         cal.changeAnimation("change4");
+        cal.animation.play();
     }
     if (ButtonCount === 10) {
         cal.visible = true;
         cal.changeAnimation("change5");
+        cal.animation.play();
     }
     if (ButtonCount === 12) {
         cal.visible = true;
         cal.changeAnimation("change6");
+        cal.animation.play();
     }
 }
 

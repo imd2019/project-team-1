@@ -48,6 +48,10 @@ function setupKasseScene() {
     Button_Renovieren.scale = 0.18;
     Button_Renovieren.mouseActive = true;
     kasseScene.add(Button_Renovieren);
+
+    //BACK TO SHOP BUTTON
+    kasseScene.add(Button_BackToShop);
+
 }
 
 
@@ -133,6 +137,11 @@ function initKassenScene() {
         Button_Renovieren.onMouseOver = Button_Renovieren_mouseOver;
         Button_Renovieren.onMouseOut = Button_Renovieren_mouseOut;
     }
+
+
+    Button_BackToShop.onMouseReleased = Button_BackToShop_mouseReleased;
+    Button_BackToShop.onMouseOver = Button_BackToShop_mouseOver;
+    Button_BackToShop.onMouseOut = Button_BackToShop_mouseOut;
 }
 
 function exitKassenScene() {
@@ -151,6 +160,12 @@ function exitKassenScene() {
     Button_Renovieren.onMouseOver = undefined;
     Button_Renovieren.onMouseOut = undefined;
     Button_Renovieren.changeImage("normal");
+
+
+    Button_BackToShop.onMouseReleased = undefined;
+    Button_BackToShop.onMouseOver = undefined;
+    Button_BackToShop.onMouseOut = undefined;
+    Button_BackToShop.changeImage("normal");
 }
 
 
