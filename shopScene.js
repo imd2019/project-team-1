@@ -43,6 +43,7 @@ var feedback_Workshop = loadImage('Feedback/Marvin_Gut_Workshop.png');
 var geldBaumAnimSequenceRequested = false;
 var geldbaumSequenceState = 0;
 var geldBaumAnimPlaying = false;
+var runGeldBaumAnimationSafetyCount = 0;
 
 var geldBaumDelay = 1 * 30;
 var geldBaumAnimationDelay = geldBaumDelay;
@@ -539,6 +540,7 @@ function drawShopScene() {
 
             case (2):
                 changeCalendar();
+                runGeldBaumAnimationSafetyCount=0;
                 geldbaumSequenceState++
                 break;
             case (3): // Geldbaum Animation
@@ -567,8 +569,9 @@ function drawShopScene() {
                             geldBaumAnimPlaying = true;
                         }
                     } else { // already playing
-                        console.log("Run geldbaum animation");
-                        if (Geldbaum.animation.getFrame() != lastBaumFrame) {
+                        console.log("Run geldbaum animation #"+runGeldBaumAnimationSafetyCount);
+                        runGeldBaumAnimationSafetyCount++;
+                        if (Geldbaum.animation.getFrame() != lastBaumFrame || runGeldBaumAnimationSafetyCount > 150) {
                             console.log("Frame Changed");
                             lastBaumFrame = Geldbaum.animation.getFrame();
                             Geldbaum.animCnt--;
@@ -585,6 +588,11 @@ function drawShopScene() {
 
             case (4): // Ende der Sequenz
                 if (ButtonCount == 12) {
+                    baumState = lastBaumState;
+                    lastUmsatz = Umsatz;
+                    geldbaumSequenceState = 0;
+                    geldBaumAnimSequenceRequested = false;
+                    geldBaumAnimPlaying = false;
                     changeGameState(GameStates.END);
                     song.stop();
                 } else {
@@ -593,6 +601,7 @@ function drawShopScene() {
                     lastUmsatz = Umsatz;
                     geldbaumSequenceState = 0;
                     geldBaumAnimSequenceRequested = false;
+                    geldBaumAnimPlaying = false;
                     activateAllShopButtons();
                 }
                 break;
