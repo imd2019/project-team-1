@@ -7,7 +7,7 @@ var B1_hover = loadImage('Buttons_Start/Einführung überspringen Button einzeln
 var B2 = loadImage('Buttons_Start/Start Button.png');
 var B2_hover = loadImage('Buttons_Start/Start Button hover.png');
 startscreen = loadImage('Graphics/Startscreen.png');
-
+var Button_Ueberspringen;
 
 
 //--------------------------------------------------------------------------------------------------------
@@ -15,11 +15,11 @@ startscreen = loadImage('Graphics/Startscreen.png');
 function setupStartScene() {
     startScene = new Group();
 
-    Button_Überspringen = createSprite(width / 2 + 350, 600);
-    Button_Überspringen.addImage("normal", B1);
-    Button_Überspringen.addImage("hover", B1_hover);
-    Button_Überspringen.scale = 0.3;
-    startScene.add(Button_Überspringen);
+    Button_Ueberspringen = createSprite(width / 2 + 350, 600);
+    Button_Ueberspringen.addImage("normal", B1);
+    Button_Ueberspringen.addImage("hover", B1_hover);
+    Button_Ueberspringen.scale = 0.3;
+    startScene.add(Button_Ueberspringen);
 
 
     Button_Start = createSprite(width / 2 + 50, 600);
@@ -31,21 +31,30 @@ function setupStartScene() {
 
 //INPUT BUTTON ÜBERSPRINGEN
 
-function Button_Überspringen_mouseReleased() {
+function Button_Ueberspringen_mouseReleased() {
     changeGameState(GameStates.SHOP);
+    click_sound.setVolume(0.2);
+    click_sound.play();
+
 }
 
-function Button_Überspringen_mouseOver() {
-    Button_Überspringen.changeImage("hover");
+function Button_Ueberspringen_mouseOver() {
+    Button_Ueberspringen.changeImage("hover");
 }
 
-function Button_Überspringen_mouseOut() {
-    Button_Überspringen.changeImage("normal");
+function Button_Ueberspringen_mouseOut() {
+    Button_Ueberspringen.changeImage("normal");
 }
 
 //INPUT BUTTON START
 
 function Button_Start_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
+    song.stop();
+    song.setVolume(0.1);
+    song.play();
+    song.loop();
     changeGameState(GameStates.INTRO);
 }
 
@@ -60,9 +69,10 @@ function Button_Start_mouseOut() {
 
 
 function initStartScene() {
-    Button_Überspringen.onMouseReleased = Button_Überspringen_mouseReleased;
-    Button_Überspringen.onMouseOver = Button_Überspringen_mouseOver;
-    Button_Überspringen.onMouseOut = Button_Überspringen_mouseOut;
+    console.log("initStartScene()");
+    Button_Ueberspringen.onMouseReleased = Button_Ueberspringen_mouseReleased;
+    Button_Ueberspringen.onMouseOver = Button_Ueberspringen_mouseOver;
+    Button_Ueberspringen.onMouseOut = Button_Ueberspringen_mouseOut;
 
     Button_Start.onMouseReleased = Button_Start_mouseReleased;
     Button_Start.onMouseOver = Button_Start_mouseOver;
@@ -107,9 +117,9 @@ function initStartScene() {
 }
 
 function exitStartScene() {
-    Button_Überspringen.onMouseReleased = undefined;
-    Button_Überspringen.onMouseOver = undefined;
-    Button_Überspringen.onMouseOut = undefined;
+    Button_Ueberspringen.onMouseReleased = undefined;
+    Button_Ueberspringen.onMouseOver = undefined;
+    Button_Ueberspringen.onMouseOut = undefined;
 
     Button_Start.onMouseReleased = undefined;
     Button_Start.onMouseOver = undefined;
@@ -120,4 +130,5 @@ function drawStartScene() {
     clear();
     background(startscreen);
     drawSprites(startScene);
+
 }

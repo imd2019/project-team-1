@@ -92,6 +92,8 @@ function setupWorkbenchScene() {
 //INPUT BUTTON BACKTOSHOP
 
 function Button_BackToShop_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
     changeGameState(GameStates.SHOP);
 }
 
@@ -106,6 +108,8 @@ function Button_BackToShop_mouseOut() {
 //INPUT BUTTON BLUMENKRÄNZE
 
 function Button_Blumenkränze_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
     changeGameState(GameStates.SHOP);
     character.changeAnimation("crafting");
     changeMoney(1);
@@ -127,6 +131,8 @@ function Button_Blumenkränze_mouseOut() {
 //INPUT BUTTON GRUßKARTEN
 
 function Button_Grußkarten_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
     changeGameState(GameStates.SHOP);
     character.changeAnimation("crafting");
     changeMoney(1);
@@ -148,6 +154,8 @@ function Button_Grußkarten_mouseOut() {
 //INPUT BUTTON HANDYHÜLLEN
 
 function Button_Handyhüllen_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
     changeGameState(GameStates.SHOP);
     character.changeAnimation("crafting");
     changeMoney(3);
@@ -169,6 +177,8 @@ function Button_Handyhüllen_mouseOut() {
 //INPUT BUTTON ROSENTEE
 
 function Button_Rosentee_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
     changeGameState(GameStates.SHOP);
     character.changeAnimation("crafting");
     changeMoney(2);
@@ -190,6 +200,8 @@ function Button_Rosentee_mouseOut() {
 //INPUT BUTTON WORKSHOP
 
 function Button_Workshop_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
     changeGameState(GameStates.SHOP);
     character.changeAnimation("crafting");
     changeMoney(3);

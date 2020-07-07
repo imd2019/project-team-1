@@ -103,10 +103,14 @@ function buttonNext_mouseReleased() {
     console.log("Introscene Screen: " + screenNumber);
     if (screenNumber == 7) {
         console.log("Change to Shop Scene");
+        click_sound.setVolume(0.2);
+        click_sound.play();
         changeGameState(GameStates.SHOP);
     } else {
         screenNumber++;
         intro0.changeAnimation("screen" + screenNumber);
+        click_sound.setVolume(0.2);
+        click_sound.play();
         console.log("Changed animation to screen" + screenNumber);
     }
 }

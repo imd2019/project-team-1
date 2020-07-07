@@ -107,6 +107,8 @@ function setupComputerScene() {
 //BUTTON FERNSEHWERBUNG INPUT
 
 function Button_Fernsehwerbung_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
     changeGameState(GameStates.SHOP);
     character.changeAnimation("typing");
     pc.changeAnimation("shining");
@@ -132,6 +134,8 @@ function Button_Fernsehwerbung_mouseOut() {
 //BUTTON FLYER INPUT
 
 function Button_Flyer_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
     changeGameState(GameStates.SHOP);
     character.changeAnimation("typing");
     pc.changeAnimation("shining");
@@ -154,6 +158,8 @@ function Button_Flyer_mouseOut() {
 //BUTTON LIEFERSERVICE INPUT
 
 function Button_Lieferservice_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
     changeGameState(GameStates.SHOP);
     character.changeAnimation("typing");
     pc.changeAnimation("shining");
@@ -176,6 +182,8 @@ function Button_Lieferservice_mouseOut() {
 //BUTTON MITARBEITER INPUT
 
 function Button_Mitarbeiter_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
     changeGameState(GameStates.SHOP);
     character.changeAnimation("typing");
     pc.changeAnimation("shining");
@@ -198,6 +206,8 @@ function Button_Mitarbeiter_mouseOut() {
 //BUTTON SOCIAL MEDIA INPUT
 
 function Button_SM_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
     changeGameState(GameStates.SHOP);
     character.changeAnimation("typing");
     pc.changeAnimation("shining");
@@ -222,6 +232,8 @@ function Button_SM_mouseOut() {
 //BUTTON WEBSITE INPUT
 
 function Button_Website_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
     changeGameState(GameStates.SHOP);
     character.changeAnimation("typing");
     pc.changeAnimation("shining");
@@ -245,6 +257,8 @@ function Button_Website_mouseOut() {
 //BUTTON WERBUNG INPUT
 
 function Button_Werbung_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
     changeGameState(GameStates.SHOP);
     character.changeAnimation("typing");
     pc.changeAnimation("shining");
@@ -267,6 +281,8 @@ function Button_Werbung_mouseOut() {
 //BUTTON ZUBEHÖR INPUT
 
 function Button_Zubehoer_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
     changeGameState(GameStates.SHOP);
     character.changeAnimation("typing");
     pc.changeAnimation("shining");

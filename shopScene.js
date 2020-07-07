@@ -257,6 +257,8 @@ function setupShopScene() {
 
 function cash_register_mouseReleased() {
     character_state = CharacterStates.WALKING_TO_CASHREGISTER;
+    click_sound.setVolume(0.2);
+    click_sound.play();
 }
 
 function cash_register_mouseOver() {
@@ -273,6 +275,8 @@ function cash_register_mouseOut() {
 
 function pc_mouseReleased() {
     character_state = CharacterStates.WALKING_TO_PC;
+    click_sound.setVolume(0.2);
+    click_sound.play();
 }
 
 function pc_mouseOver() {
@@ -290,6 +294,8 @@ function pc_mouseOut() {
 
 function workbench_mouseReleased() {
     character_state = CharacterStates.WALKING_TO_WORKBENCH;
+    click_sound.setVolume(0.2);
+    click_sound.play();
 }
 
 function workbench_mouseOver() {
@@ -538,6 +544,7 @@ function drawShopScene() {
             case (3): // Geldbaum Animation
                 geldBaumAnimationDelay--;
                 if (geldBaumAnimationDelay <= 0) {
+
                     if (!geldBaumAnimPlaying) {
                         console.log("Start geldbaum animation. lastBaumState=" + lastBaumState + ", baumState=" + baumState);
                         Geldbaum.animCnt = Math.abs(lastBaumState - baumState);
@@ -547,6 +554,15 @@ function drawShopScene() {
                             geldBaumAnimPlaying = false;
                         } else {
                             lastBaumFrame = baumState;
+
+                            if (lastBaumState - baumState < 0) {
+                                grow_sound.setVolume(0.1);
+                                grow_sound.play();
+                            } else {
+                                grow_sound.setVolume(0.1);
+                                shrink_sound.play();
+                            }
+
                             Geldbaum.animation.goToFrame(baumState);
                             geldBaumAnimPlaying = true;
                         }
@@ -570,6 +586,7 @@ function drawShopScene() {
             case (4): // Ende der Sequenz
                 if (ButtonCount == 12) {
                     changeGameState(GameStates.END);
+                    song.stop();
                 } else {
                     console.log("End of sequence");
                     baumState = lastBaumState;

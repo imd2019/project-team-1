@@ -57,6 +57,8 @@ function setupKasseScene() {
 
 //BUTTON ANGEBOT INPUT
 function Button_Angebot_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
     changeMoney(3);
     ButtonCount++;
     ButtonCount_Cash++;
@@ -79,6 +81,8 @@ function Button_Angebot_mouseOut() {
 
 //BUTTON PREISE INPUT
 function Button_Preise_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
     changeGameState(GameStates.SHOP);
     character.changeAnimation("typing");
     changeMoney(3);
@@ -101,6 +105,8 @@ function Button_Preise_mouseOut() {
 
 //BUTTON RENOVIEREN INPUT
 function Button_Renovieren_mouseReleased() {
+    click_sound.setVolume(0.2);
+    click_sound.play();
     changeGameState(GameStates.SHOP);
     character.changeAnimation("typing");
     changeMoney(-8);
